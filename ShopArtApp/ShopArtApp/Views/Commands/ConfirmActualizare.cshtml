@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Confirm Actualizare";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div>@TempData["Message"]</div>
+}
+
+<a asp-action="Index">Înapoi la lista de comenzi</a>

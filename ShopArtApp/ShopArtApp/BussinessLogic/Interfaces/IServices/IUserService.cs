@@ -8,5 +8,7 @@ namespace ShopArtApp.BussinessLogic.Services.IServices
         void Logout();
         Task<bool> Register(User user);
         Task<User> GetUserById(int id);
+        User Update(User user);
+
     }
 }

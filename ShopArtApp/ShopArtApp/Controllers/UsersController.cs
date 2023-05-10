@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShopArtApp.BussinessLogic.Services.IServices;
-using ShopArtApp.BussinessLogic.Services.Service;
-using ShopArtApp.DataAcces.Context;
-using ShopArtApp.Models;
 
 namespace ShopArtApp.Controllers
 {
@@ -20,16 +11,24 @@ namespace ShopArtApp.Controllers
         {
             _userService = userService;
         }
-        public IActionResult MyAccount()
+        public async Task<IActionResult> Details()
         {
-            var currentUserId = 1;
-            var currentUser = _userService.GetUserById(currentUserId);
+            var currentUser = await _userService.GetUserById(1);
             if (currentUser == null)
             {
                 return NotFound();
             }
 
             return View(currentUser);
+        }
+        public async Task<IActionResult> Edit(int id)
+        {
+            var user = await _userService.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
         }
     }
 }

@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShopArtApp.BussinessLogic.Interfaces.IServices;
-using System.Security.Claims;
 
 namespace ShopArtApp.Controllers
 {
-   
+
     public class ShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartService _shoppingCartServices;
@@ -14,7 +12,7 @@ namespace ShopArtApp.Controllers
         {
             _shoppingCartServices = shoppingCartServices;
         }
-
+        /*
         [HttpPost]
         [Route("add")]
         public async Task<IActionResult> AddItemToCartAsync(int productId, int quantity)
@@ -25,7 +23,8 @@ namespace ShopArtApp.Controllers
 
             return Ok();
         }
-
+        
+        
         [HttpPost]
         [Route("remove")]
         public async Task<IActionResult> RemoveItemFromCartAsync(int productId)
@@ -43,10 +42,10 @@ namespace ShopArtApp.Controllers
         {
             int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
-            var cartItems = await _shoppingCartServices.GetCartItemsAsync(userId);
+            var cartItems = null; await _shoppingCartServices.GetCartItemsAsync(userId);
 
             return Ok(cartItems);
         }
-
+     */
     }
 }

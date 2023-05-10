@@ -1,5 +1,4 @@
-﻿using ShopArtApp.Models;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace ShopArtApp.DataAcces.Repositories.Interfaces
 {

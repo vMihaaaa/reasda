@@ -1,12 +1,10 @@
 ﻿using ShopArtApp.BussinessLogic.Interfaces.IServices;
 using ShopArtApp.DataAcces.Repositories.Interfaces;
 using ShopArtApp.Models;
-using System.Diagnostics.Metrics;
-using System.IO;
 
 namespace ShopArtApp.BussinessLogic.Services
 {
-    public class BillAddressService:IBillAddressService
+    public class BillAddressService : IBillAddressService
     {
         private readonly IUnitOfWork _unitOfWork;
 

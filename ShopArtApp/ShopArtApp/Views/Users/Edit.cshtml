@@ -1,0 +1,28 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input id="name" name="name" class="form-control" type="text" value="@Model.Name" />
+    </div>
+    <div class="form-group">
+        <label for="mailAddress">Email:</label>
+        <input id="mailAddress" name="mailAddress" class="form-control" type="email" value="@Model.MailAddress" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input id="password" name="password" class="form-control" type="password" value="@Model.Password" />
+    </div>
+    <div class="form-group">
+        <label for="dateOfSignIn">Date of sign in:</label>
+        <input id="dateOfSignIn" name="dateOfSignIn" class="form-control" type="date" value="@Model.DateOfSignIn.ToShortDateString()" />
+    </div>
+    <input type="hidden" name="IdUser" value="@Model.UserId" />
+    <button type="submit">Update</button>
+</form>

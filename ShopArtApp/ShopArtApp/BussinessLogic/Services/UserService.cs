@@ -2,11 +2,11 @@
 using ShopArtApp.BussinessLogic.Services.IServices;
 using ShopArtApp.DataAcces.Repositories.Interfaces;
 using ShopArtApp.Models;
-using System.Linq.Expressions;
 
-namespace ShopArtApp.BussinessLogic.Services.Service { 
-public class UserService : IUserService
+namespace ShopArtApp.BussinessLogic.Services.Service
 {
+    public class UserService : IUserService
+    {
         private readonly IUnitOfWork _unitOfWork;
 
         public UserService(IUnitOfWork unitOfWork)
@@ -28,6 +28,12 @@ public class UserService : IUserService
 
             return true;
         }
+        public User Update(User user)
+        {
+            _unitOfWork.UserRepository.Update(user);
+            _unitOfWork.Save();
+            return user;
+        }
 
         public async Task<User> Login(string mailAddress, string password)
         {
@@ -41,7 +47,7 @@ public class UserService : IUserService
 
         public async Task<User> GetUserById(int id)
         {
-            return  await _unitOfWork.UserRepository.GetByIdAsync(id);
+            return await _unitOfWork.UserRepository.GetByIdAsync(id);
         }
     }
 }

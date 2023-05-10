@@ -17,7 +17,7 @@ namespace ShopArtApp.DataAcces.Repositories
         public IBaseRepository<User, int> UserRepository { get; set; }
 
         public UnitOfWork(IBaseRepository<BillAddress, int> billAddressRepository, IBaseRepository<Category, int> categoryRepository, IBaseRepository<Command, int> commandRepository,
-            IBaseRepository<CommandDetail, int> commandDetailRepository,IBaseRepository<Product, int> productRepository, IBaseRepository<ShoppingCart, int> shoppingCartRepository, 
+            IBaseRepository<CommandDetail, int> commandDetailRepository, IBaseRepository<Product, int> productRepository, IBaseRepository<ShoppingCart, int> shoppingCartRepository,
             IBaseRepository<User, int> userRepository)
         {
             BillAddressRepository = billAddressRepository ?? throw new ArgumentNullException(nameof(billAddressRepository));
@@ -55,6 +55,6 @@ namespace ShopArtApp.DataAcces.Repositories
         {
             await _dbContext.SaveChangesAsync();
         }
-  
+
     }
 }

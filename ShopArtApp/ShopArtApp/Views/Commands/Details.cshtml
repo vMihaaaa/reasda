@@ -1,0 +1,43 @@
+﻿@model List<Command>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@if (Model.Count == 0)
+{
+    <p>Nu există comenzi pentru acest utilizator.</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Status</th>
+            <th>Nume Cumparator</th>
+            <th>Total</th>
+            <th>Sector</th>
+            <th>Oras</th>
+            <th>Strada</th>
+            <th>Numar</th>
+            <th>Data comenzii</th>
+            <th>Actualizare</th>
+        </tr>
+        @foreach (var command in Model)
+        {
+            <tr>
+                <td>@command.Status</td>
+                <td>@command.Total</td>
+                <td>@command.DateCommand.ToShortDateString()</td>
+              
+                <td>@Html.ActionLink("Detalii", "Details", "Command", new { id = command.IdCommand }, null)</td>
+                <td><a asp-action="Update" asp-route-id="@command.IdCommand">Actualizare</a></td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+
+
+

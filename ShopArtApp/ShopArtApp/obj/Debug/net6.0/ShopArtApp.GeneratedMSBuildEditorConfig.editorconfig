@@ -9,37 +9,61 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ShopArtApp
 build_property.RootNamespace = ShopArtApp
-build_property.ProjectDir = D:\shopArtApp\ShopArtApp\ShopArtApp\
-build_property.RazorLangVersion = 2.1
+build_property.ProjectDir = D:\PAWApp\Miha\ShopArtApp\ShopArtApp\
+build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\shopArtApp\ShopArtApp\ShopArtApp
+build_property.MSBuildProjectDirectory = D:\PAWApp\Miha\ShopArtApp\ShopArtApp
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/shopArtApp/ShopArtApp/ShopArtApp/Views/Home/Index.cshtml]
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Commands/ConfirmActualizare.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWFuZHNcQ29uZmlybUFjdHVhbGl6YXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Commands/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWFuZHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Commands/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWFuZHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Commands/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWFuZHNcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/shopArtApp/ShopArtApp/ShopArtApp/Views/Home/Privacy.cshtml]
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/shopArtApp/ShopArtApp/ShopArtApp/Views/Shared/Error.cshtml]
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/shopArtApp/ShopArtApp/ShopArtApp/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/shopArtApp/ShopArtApp/ShopArtApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/shopArtApp/ShopArtApp/ShopArtApp/Views/_ViewImports.cshtml]
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Users/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/shopArtApp/ShopArtApp/ShopArtApp/Views/_ViewStart.cshtml]
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PAWApp/Miha/ShopArtApp/ShopArtApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-yuvhaz9rq7

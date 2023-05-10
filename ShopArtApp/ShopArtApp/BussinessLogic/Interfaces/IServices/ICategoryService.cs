@@ -2,8 +2,8 @@
 
 namespace ShopArtApp.BussinessLogic.Interfaces.IServices
 {
-        public interface ICategoryService
-        {
+    public interface ICategoryService
+    {
         public interface ICategoryService
         {
             Task<IEnumerable<Category>> GetAllCategoriesAsync();

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopArtApp.BussinessLogic.Interfaces.IServices;
-using ShopArtApp.BussinessLogic.Services;
 using ShopArtApp.Models;
-using System.Security.Claims;
 
 namespace ShopArtApp.Controllers
 {
@@ -14,6 +12,7 @@ namespace ShopArtApp.Controllers
         {
             _billAddressService = billAddressService;
         }
+
 
         [HttpPost]
         public async Task<IActionResult> AddBillAddressAsync(BillAddress billAddress)
@@ -35,21 +34,21 @@ namespace ShopArtApp.Controllers
             return Ok(billAddress);
         }
 
-      /*  [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBillAddressAsync(BillAddress billAddress)
-        {
-            try
-            {
-                 _billAddressService.UpdateBillAddressAsync(billAddress.IdBillAddress, billAddress.County,billAddress.Town, billAddress.Street,billAddress.Number, billAddress.PostalCode);
+        /*  [HttpPut("{id}")]
+          public async Task<IActionResult> UpdateBillAddressAsync(BillAddress billAddress)
+          {
+              try
+              {
+                   _billAddressService.UpdateBillAddressAsync(billAddress.IdBillAddress, billAddress.County,billAddress.Town, billAddress.Street,billAddress.Number, billAddress.PostalCode);
 
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-      */
+                  return Ok();
+              }
+              catch (Exception ex)
+              {
+                  return BadRequest(ex.Message);
+              }
+          }
+        */
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBillAddress(int id)
         {

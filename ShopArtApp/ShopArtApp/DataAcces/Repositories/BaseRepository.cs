@@ -2,7 +2,6 @@
 using ShopArtApp.DataAcces.Context;
 using ShopArtApp.DataAcces.Repositories.Interfaces;
 using System.Linq.Expressions;
-using System.Security.Cryptography;
 
 namespace ShopArtApp.DataAcces.Repositories
 {

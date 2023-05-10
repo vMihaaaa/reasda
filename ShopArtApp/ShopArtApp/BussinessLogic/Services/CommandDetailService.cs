@@ -29,16 +29,16 @@ namespace ShopArtApp.BussinessLogic.Services
             _unitOfWork.Save();
         }
 
-        public  void UpdateCommandDetailAsync(CommandDetail commandDetail)
+        public void UpdateCommandDetailAsync(CommandDetail commandDetail)
         {
             _unitOfWork.CommandDetailRepository.Update(commandDetail);
-             _unitOfWork.Save();
+            _unitOfWork.Save();
         }
 
         public async Task DeleteCommandDetailAsync(CommandDetail commandDetail)
         {
             await _unitOfWork.CommandDetailRepository.RemoveAsync(commandDetail.IdCommandDetail);
-             _unitOfWork.Save();
+            _unitOfWork.Save();
         }
     }
 }

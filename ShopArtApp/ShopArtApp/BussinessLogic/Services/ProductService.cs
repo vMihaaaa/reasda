@@ -30,17 +30,17 @@ namespace ShopArtApp.BussinessLogic.Services
             return product;
         }
 
-        public  Product UpdateProductAsync(Product product)
+        public Product UpdateProductAsync(Product product)
         {
             _unitOfWork.ProductRepository.Update(product);
-             _unitOfWork.Save();
+            _unitOfWork.Save();
             return product;
         }
 
-        public  void  DeleteProductAsync(Product product)
+        public void DeleteProductAsync(Product product)
         {
             _unitOfWork.ProductRepository.RemoveAsync(product.IdProduct);
-             _unitOfWork.Save();
+            _unitOfWork.Save();
         }
     }
 }

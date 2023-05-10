@@ -10,6 +10,7 @@ namespace ShopArtApp.BussinessLogic.Interfaces.IServices
         Task<Command> AddCommandAsync(Command command);
         void UpdateCommandAsync(Command command);
         Task DeleteCommandAsync(Command command);
+        public List<Command> GetCommandsByUserId(string userId);
     }
 
 }

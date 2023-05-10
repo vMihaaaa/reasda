@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopArtApp.BussinessLogic.Interfaces.IServices;
 using ShopArtApp.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace ShopArtApp.Controllers
 {
@@ -16,7 +12,7 @@ namespace ShopArtApp.Controllers
         {
             _commandService = commandService;
         }
-       
+
         public IActionResult Index()
         {
             return View();
@@ -53,8 +49,8 @@ namespace ShopArtApp.Controllers
             if (id != command.IdCommand)
             {
                 return BadRequest();
-            } 
-             _commandService.UpdateCommandAsync(command);
+            }
+            _commandService.UpdateCommandAsync(command);
 
             return NoContent();
         }
@@ -71,21 +67,26 @@ namespace ShopArtApp.Controllers
             await _commandService.DeleteCommandAsync(command);
             return Ok();
         }
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details()
         {
-            if (id == null || _commandService.GetAllCommandsAsync == null)
-            {
-                return NotFound();
-            }
 
-            var test = await _commandService.GetCommandByIdAsync(id);
-                
-            if (test == null)
-            {
-                return NotFound();
-            }
+            var commands = _commandService.GetCommandsByUserId("1");
+            return View(commands);
 
-            return View(test);
+        }
+
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var command = await _commandService.GetCommandByIdAsync(id);
+            return View(command);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmActualizare([FromForm] int id, [FromForm] Command command)
+        {
+            command.IdCommand = id;
+            _commandService.UpdateCommandAsync(command);
+            return RedirectToAction("Details");
         }
     }
 }

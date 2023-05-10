@@ -43,7 +43,7 @@ namespace ShopArtApp.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateCommandDetailAsync(CommandDetail commandDetail)
         {
-             _commandDetailService.UpdateCommandDetailAsync(commandDetail);
+            _commandDetailService.UpdateCommandDetailAsync(commandDetail);
             return Ok();
         }
 

@@ -1,0 +1,49 @@
+﻿@model Command
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Update">
+    <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" name="status" class="form-control">
+            <option value="In procesare">In procesare</option>
+            <option value="Expediată">Expediată</option>
+            <option value="Livrata">Livrata</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="total">Total:</label>
+        <input id="total" name="total" class="form-control" type="number" value="@Model.Total" />
+    </div>
+    <div class="form-group">
+        <label for="date">Data comenzii:</label>
+        <input id="date" name="date" class="form-control" type="date" value="@Model.DateCommand.ToShortDateString()" />
+    </div>
+    <div class="form-group">
+        <label for="county">Județ:</label>
+        <input id="county" name="county" class="form-control" type="text" value="" />
+    </div>
+    <div class="form-group">
+        <label for="town">Oraș:</label>
+        <input id="town" name="town" class="form-control" type="text" value="" />
+    </div>
+    <div class="form-group">
+        <label for="street">Stradă:</label>
+        <input id="street" name="street" class="form-control" type="text" value="" />
+    </div>
+    <div class="form-group">
+        <label for="number">Număr:</label>
+        <input id="number" name="number" class="form-control" type="text" value="" />
+    </div>
+    <input type="hidden" name="IdCommand" value="@Model.IdCommand" />
+    <form asp-action="ConfirmActualizare" method="post">
+        <input type="hidden" name="IdCommand" value="@Model.IdCommand" />
+        <button type="submit" formaction="@Url.Action("ConfirmActualizare")">Actualizare</button>
+
+    </form>
+
+</form>

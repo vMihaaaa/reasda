@@ -17,7 +17,7 @@ namespace ShopArtApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.15")
+                .HasAnnotation("ProductVersion", "6.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -64,9 +64,6 @@ namespace ShopArtApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("IdUser")
-                        .HasColumnType("int");
-
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
@@ -81,12 +78,12 @@ namespace ShopArtApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserIdUser")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("IdBillAddress");
 
-                    b.HasIndex("UserIdUser");
+                    b.HasIndex("UserId");
 
                     b.ToTable("BillAddresses");
                 });
@@ -119,20 +116,8 @@ namespace ShopArtApp.Migrations
                     b.Property<int?>("BillAddressIdBillAddress")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CommandDetailIdCommandDetail")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DateCommand")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("IdBillAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdCommandDetail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdUser")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
@@ -140,16 +125,14 @@ namespace ShopArtApp.Migrations
                     b.Property<double>("Total")
                         .HasColumnType("float");
 
-                    b.Property<int?>("userIdUser")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("IdCommand");
 
                     b.HasIndex("BillAddressIdBillAddress");
 
-                    b.HasIndex("CommandDetailIdCommandDetail");
-
-                    b.HasIndex("userIdUser");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Commands");
                 });
@@ -165,13 +148,16 @@ namespace ShopArtApp.Migrations
                     b.Property<int>("Cantity")
                         .HasColumnType("int");
 
-                    b.Property<string>("IdCommand")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("IdCommand")
+                        .HasColumnType("int");
 
                     b.Property<double>("UnitPrice")
                         .HasColumnType("float");
 
                     b.HasKey("IdCommandDetail");
+
+                    b.HasIndex("IdCommand")
+                        .IsUnique();
 
                     b.ToTable("CommandDetails");
                 });
@@ -179,12 +165,9 @@ namespace ShopArtApp.Migrations
             modelBuilder.Entity("ShopArtApp.Models.Product", b =>
                 {
                     b.Property<int>("IdProduct")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdProduct"), 1L, 1);
-
-                    b.Property<int?>("CommandDetailIdCommandDetail")
+                    b.Property<int>("CommandDetailId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -202,26 +185,15 @@ namespace ShopArtApp.Migrations
 
                     b.HasKey("IdProduct");
 
-                    b.HasIndex("CommandDetailIdCommandDetail");
-
                     b.ToTable("Products");
                 });
 
             modelBuilder.Entity("ShopArtApp.Models.ShoppingCart", b =>
                 {
                     b.Property<int>("IdShoppingCart")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdShoppingCart"), 1L, 1);
 
                     b.Property<int>("Cantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("IdProduct")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("IdUser")
                         .HasColumnType("int");
 
                     b.Property<double>("Total")
@@ -234,11 +206,11 @@ namespace ShopArtApp.Migrations
 
             modelBuilder.Entity("ShopArtApp.Models.User", b =>
                 {
-                    b.Property<int>("IdUser")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUser"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
                     b.Property<DateTime>("DateOfSignIn")
                         .HasColumnType("datetime2");
@@ -255,12 +227,10 @@ namespace ShopArtApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("shoppingCartIdShoppingCart")
+                    b.Property<int>("shoppingCartId")
                         .HasColumnType("int");
 
-                    b.HasKey("IdUser");
-
-                    b.HasIndex("shoppingCartIdShoppingCart");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
@@ -299,48 +269,70 @@ namespace ShopArtApp.Migrations
                 {
                     b.HasOne("ShopArtApp.Models.User", "User")
                         .WithMany("BillAddresses")
-                        .HasForeignKey("UserIdUser");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("ShopArtApp.Models.Command", b =>
                 {
-                    b.HasOne("ShopArtApp.Models.BillAddress", "BillAddress")
-                        .WithMany()
+                    b.HasOne("ShopArtApp.Models.BillAddress", null)
+                        .WithMany("Commands")
                         .HasForeignKey("BillAddressIdBillAddress");
 
-                    b.HasOne("ShopArtApp.Models.CommandDetail", "CommandDetail")
-                        .WithMany()
-                        .HasForeignKey("CommandDetailIdCommandDetail");
-
-                    b.HasOne("ShopArtApp.Models.User", "user")
+                    b.HasOne("ShopArtApp.Models.User", "User")
                         .WithMany("Commands")
-                        .HasForeignKey("userIdUser");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
-                    b.Navigation("BillAddress");
+                    b.Navigation("User");
+                });
 
-                    b.Navigation("CommandDetail");
+            modelBuilder.Entity("ShopArtApp.Models.CommandDetail", b =>
+                {
+                    b.HasOne("ShopArtApp.Models.Command", "Command")
+                        .WithOne("CommandDetail")
+                        .HasForeignKey("ShopArtApp.Models.CommandDetail", "IdCommand")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("user");
+                    b.Navigation("Command");
                 });
 
             modelBuilder.Entity("ShopArtApp.Models.Product", b =>
                 {
                     b.HasOne("ShopArtApp.Models.CommandDetail", "CommandDetail")
                         .WithMany("Products")
-                        .HasForeignKey("CommandDetailIdCommandDetail");
+                        .HasForeignKey("IdProduct")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CommandDetail");
                 });
 
-            modelBuilder.Entity("ShopArtApp.Models.User", b =>
+            modelBuilder.Entity("ShopArtApp.Models.ShoppingCart", b =>
                 {
-                    b.HasOne("ShopArtApp.Models.ShoppingCart", "shoppingCart")
-                        .WithMany()
-                        .HasForeignKey("shoppingCartIdShoppingCart");
+                    b.HasOne("ShopArtApp.Models.User", "User")
+                        .WithOne("ShoppingCart")
+                        .HasForeignKey("ShopArtApp.Models.ShoppingCart", "IdShoppingCart")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
-                    b.Navigation("shoppingCart");
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ShopArtApp.Models.BillAddress", b =>
+                {
+                    b.Navigation("Commands");
+                });
+
+            modelBuilder.Entity("ShopArtApp.Models.Command", b =>
+                {
+                    b.Navigation("CommandDetail")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ShopArtApp.Models.CommandDetail", b =>
@@ -353,6 +345,9 @@ namespace ShopArtApp.Migrations
                     b.Navigation("BillAddresses");
 
                     b.Navigation("Commands");
+
+                    b.Navigation("ShoppingCart")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -4,7 +4,7 @@ using ShopArtApp.Models;
 
 namespace ShopArtApp.Controllers
 {
-       public class ProductController : Controller
+    public class ProductController : Controller
     {
         private readonly IProductService _productService;
 
@@ -46,7 +46,7 @@ namespace ShopArtApp.Controllers
                 return BadRequest();
             }
 
-            var updatedProduct =  _productService.UpdateProductAsync(product);
+            var updatedProduct = _productService.UpdateProductAsync(product);
             return Ok(updatedProduct);
         }
 
@@ -59,7 +59,7 @@ namespace ShopArtApp.Controllers
                 return NotFound();
             }
 
-             _productService.DeleteProductAsync(productToDelete);
+            _productService.DeleteProductAsync(productToDelete);
             return NoContent();
         }
     }
